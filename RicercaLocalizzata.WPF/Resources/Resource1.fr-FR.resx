@@ -144,6 +144,9 @@
   <data name="Posizione_Anima" xml:space="preserve">
     <value>Anima pos (fr)</value>
   </data>
+  <data name="Tacca_Bloccaggio" xml:space="preserve">
+    <value>Tacca bloccaggio (fr)</value>
+  </data>
   <data name="Tavolo" xml:space="preserve">
     <value>Table</value>
   </data>

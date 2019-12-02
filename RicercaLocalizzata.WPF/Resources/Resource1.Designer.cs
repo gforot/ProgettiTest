@@ -142,6 +142,15 @@ namespace RicercaLocalizzata.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tacca bloccaggio.
+        /// </summary>
+        internal static string Tacca_Bloccaggio {
+            get {
+                return ResourceManager.GetString("Tacca_Bloccaggio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Table.
         /// </summary>
         internal static string Tavolo {

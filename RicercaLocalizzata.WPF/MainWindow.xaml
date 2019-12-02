@@ -70,8 +70,10 @@
 
         <StackPanel Grid.Column="1" Grid.RowSpan="3" >
             <Button Style="{StaticResource functionButtonStyle}" Command="{Binding SaveCommand}" Content="Salva" />
-            <Button Style="{StaticResource functionButtonStyle}" Content="Nuovo tubo" />
-            <Button Style="{StaticResource functionButtonStyle}" Content="Carica tubo" />
+            <Button Style="{StaticResource functionButtonStyle}" Content="Nuovo Tubo" />
+            <Button Style="{StaticResource functionButtonStyle}" Content="Carica Tubo" />
+            <Button Style="{StaticResource functionButtonStyle}" Command="{Binding AcceptChangesCommand}" Content="Accept Changes" />
+            <Button Style="{StaticResource functionButtonStyle}" Command="{Binding RejectChangesCommand}" Content="Reject Changes" />
 
         </StackPanel>
     </Grid>

@@ -1,10 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using RicercaLocalizzata.Data;
+using RicercaLocalizzata.WPF.Model.Interfaces;
 using System.Collections;
 
-namespace RicercaLocalizzata.WPF.Model
+namespace RicercaLocalizzata.WPF.Model.Wrapper
 {
-    public class MyItemWrapper : ViewModelBase
+    public class MyItemWrapper : ViewModelBase, IChangeTracker
     {
         private readonly MyItem _model;
 
@@ -157,6 +158,10 @@ namespace RicercaLocalizzata.WPF.Model
             {
                 Description = Resources.Resource1.Anima;
             }
+            else if (Code == MyItemDataProvider.Element_TaccaBloccaggio)
+            {
+                Description = Resources.Resource1.Tacca_Bloccaggio;
+            }
         }
 
         public void SetCategoryDescription()
@@ -181,6 +186,20 @@ namespace RicercaLocalizzata.WPF.Model
         public override string ToString()
         {
             return $"{CategoryDescription} - {Description}";
+        }
+
+        public void AcceptChanges()
+        {
+            OriginalValue = null;
+        }
+
+        public void RejectChanges()
+        {
+            if (OriginalValue != null)
+            {
+                Value = OriginalValue;
+                OriginalValue = null;
+            }
         }
     }
 }

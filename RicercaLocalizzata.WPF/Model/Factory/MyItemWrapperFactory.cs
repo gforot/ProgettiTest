@@ -1,4 +1,5 @@
 ﻿using RicercaLocalizzata.Data;
+using RicercaLocalizzata.WPF.Model.Wrapper;
 using System;
 
 namespace RicercaLocalizzata.WPF.Model.Factory

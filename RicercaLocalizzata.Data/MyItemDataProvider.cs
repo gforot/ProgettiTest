@@ -17,15 +17,17 @@ namespace RicercaLocalizzata.Data
         public const string Element_TipoTubo = "Tipo tubo";
         public const string Element_PosizioneAnima = "Posiz anima";
         public const string Element_Anima = "Anima";
+        public const string Element_TaccaBloccaggio = "Tacca bloccaggio";
 
         public static IEnumerable<MyItem> GetSampleData()
         {
             return new List<MyItem>() 
             { 
-                new MyItem(){Code = Element_Nome, Category = Cat_Opz_Ciclo, Value = "Andrea"},
-                new MyItem(){Code = Element_TipoTubo, Category = Cat_Dati_Base, Value = ETipoTubo.Ovale},
-                new MyItem(){Code = Element_PosizioneAnima, Category = Cat_Opz_Macchina, Value = 10.5},
-                new MyItem(){Code = Element_Anima, Category = Cat_Opz_Macchina, Value = true},
+                new MyItem(){Code = Element_Nome, Category = Cat_Opz_Ciclo, Value = "Andrea", Type = typeof(string)},
+                new MyItem(){Code = Element_TipoTubo, Category = Cat_Dati_Base, Value = ETipoTubo.Ovale, Type = typeof(ETipoTubo)},
+                new MyItem(){Code = Element_PosizioneAnima, Category = Cat_Opz_Macchina, Value = 10.5, Type = typeof(double)},
+                new MyItem(){Code = Element_Anima, Category = Cat_Opz_Macchina, Value = true, Type = typeof(bool)},
+                new MyItem(){Code = Element_TaccaBloccaggio, Category = Cat_Opz_Macchina, Value = 2, Type = typeof(int)},
             };
         }
     }

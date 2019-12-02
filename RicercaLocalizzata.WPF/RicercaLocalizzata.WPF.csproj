@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Factory\MyItemWrapperFactory.cs" />
+    <Compile Include="Model\Interfaces\IChangeTracker.cs" />
     <Compile Include="Resources\Resource1.en-UK.Designer.cs">
       <DependentUpon>Resource1.en-UK.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -107,7 +108,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\MyItemWrapper.cs" />
+    <Compile Include="Model\Wrapper\MyItemWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

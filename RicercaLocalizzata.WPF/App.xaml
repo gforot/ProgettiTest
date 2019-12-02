@@ -47,7 +47,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource dataTypeTextbox}" Text="INT" Foreground="Blue" />
                 <TextBlock Width="150" FontSize="18" Text="{Binding Path=Description}" ToolTip="{Binding Path=CategoryDescription}" />
-                <TextBox Width="150" FontSize="20" Text="{Binding Path=Value}" />
+                <TextBox Width="150" FontSize="20" PreviewTextInput="TextBox_PreviewTextInputInt" Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </DataTemplate>
 
@@ -55,7 +55,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource dataTypeTextbox}" Text="DOUBLE" Foreground="Gray" />
                 <TextBlock Width="150" FontSize="18" Text="{Binding Path=Description}" ToolTip="{Binding Path=CategoryDescription}" />
-                <TextBox Width="150" FontSize="20" Text="{Binding Path=Value}" />
+                <TextBox Width="150" FontSize="20" PreviewTextInput="TextBox_PreviewTextInputDouble" Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </DataTemplate>
 

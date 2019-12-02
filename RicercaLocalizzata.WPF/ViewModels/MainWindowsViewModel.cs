@@ -1,8 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RicercaLocalizzata.Data;
-using RicercaLocalizzata.WPF.Model;
 using RicercaLocalizzata.WPF.Model.Factory;
+using RicercaLocalizzata.WPF.Model.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,6 +59,8 @@ namespace RicercaLocalizzata.WPF.ViewModels
         public ICollectionView MyCollectionView { get; private set; }
 
         public RelayCommand SaveCommand { get; private set; }
+        public RelayCommand AcceptChangesCommand { get; private set; }
+        public RelayCommand RejectChangesCommand { get; private set; }
 
         public MainWindowsViewModel(IEnumerable<MyItem> myItems)
         {
@@ -76,6 +78,8 @@ namespace RicercaLocalizzata.WPF.ViewModels
                         RaisePropertyChanged(nameof(Modified));
                         RaisePropertyChanged(nameof(Title));
                         SaveCommand.RaiseCanExecuteChanged();
+                        AcceptChangesCommand.RaiseCanExecuteChanged();
+                        RejectChangesCommand.RaiseCanExecuteChanged();
                     }
                 };
 
@@ -105,7 +109,8 @@ namespace RicercaLocalizzata.WPF.ViewModels
 
             //COMANDI
             SaveCommand = new RelayCommand(Save, CanSave);
-
+            AcceptChangesCommand = new RelayCommand(AcceptChanges, CanAcceptChanges);
+            RejectChangesCommand = new RelayCommand(RejectChanges, CanRejectChanges);
 
             // Collection which will take your ObservableCollection
             var _itemSourceList = new CollectionViewSource() { Source = MyItems };
@@ -179,6 +184,32 @@ namespace RicercaLocalizzata.WPF.ViewModels
         }
 
         private bool CanSave()
+        {
+            return Modified;
+        }
+
+        private void RejectChanges()
+        {
+            foreach (MyItemWrapper miw in MyItems)
+            {
+                miw.RejectChanges();
+            }
+        }
+
+        private bool CanRejectChanges()
+        {
+            return Modified;
+        }
+
+        private void AcceptChanges()
+        {
+            foreach(MyItemWrapper miw in MyItems)
+            {
+                miw.AcceptChanges();
+            }
+        }
+
+        private bool CanAcceptChanges()
         {
             return Modified;
         }

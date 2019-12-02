@@ -1,4 +1,5 @@
 ﻿using RicercaLocalizzata.WPF.Model;
+using RicercaLocalizzata.WPF.Model.Wrapper;
 using System;
 using System.Windows;
 using System.Windows.Controls;
