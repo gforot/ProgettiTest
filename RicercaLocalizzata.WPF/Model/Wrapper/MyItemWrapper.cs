@@ -8,18 +8,30 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
 {
     public class MyItemWrapper : ViewModelBase, IChangeTracker
     {
-        private readonly MyItem _model;
+
 
         public MyItemWrapper(MyItem myItem)
         {
             _model = myItem;
         }
 
+
+        /// <summary>
+        /// Il modello da wrappare.
+        /// </summary>
+        private readonly MyItem _model;
+
+        /// <summary>
+        /// Il modello wrappato
+        /// </summary>
         public MyItem Model
         {
             get { return _model; }
         }
 
+        /// <summary>
+        /// Property read only che identifica il parametro.
+        /// </summary>
         public string Code
         {
             get
@@ -28,6 +40,9 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
             }
         }
 
+        /// <summary>
+        /// Property read only che identifica la categoria.
+        /// </summary>
         public string Category
         {
             get
@@ -36,6 +51,9 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
             }
         }
 
+        /// <summary>
+        /// La descrizione (traduce il Code in lingua).
+        /// </summary>
         private string _description;
         public string Description
         {
@@ -49,6 +67,26 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
                 {
                     _description = value;
                     RaisePropertyChanged(nameof(Description));
+                }
+            }
+        }
+
+        /// <summary>
+        /// La descrizione della categoria (tradotta in lingua).
+        /// </summary>
+        private string _categoryDescription;
+        public string CategoryDescription
+        {
+            get
+            {
+                return _categoryDescription;
+            }
+            set
+            {
+                if (_categoryDescription != value)
+                {
+                    _categoryDescription = value;
+                    RaisePropertyChanged(nameof(CategoryDescription));
                 }
             }
         }
@@ -125,22 +163,7 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
             return obj;
         }
 
-        private string _categoryDescription;
-        public string CategoryDescription
-        {
-            get
-            {
-                return _categoryDescription;
-            }
-            set
-            {
-                if (_categoryDescription != value)
-                {
-                    _categoryDescription = value;
-                    RaisePropertyChanged(nameof(CategoryDescription));
-                }
-            }
-        }
+
 
         private IEnumerable _items;
         public IEnumerable Items 
