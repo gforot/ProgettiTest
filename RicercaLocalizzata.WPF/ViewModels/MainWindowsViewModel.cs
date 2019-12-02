@@ -181,6 +181,8 @@ namespace RicercaLocalizzata.WPF.ViewModels
         {
             MyItemSerializer s = new MyItemSerializer();
             s.Save(this.MyItems.Select(mi => mi.Model), @"c:\Temp\elementi.txt");
+
+            AcceptChanges();
         }
 
         private bool CanSave()
@@ -207,6 +209,8 @@ namespace RicercaLocalizzata.WPF.ViewModels
             {
                 miw.AcceptChanges();
             }
+
+            
         }
 
         private bool CanAcceptChanges()

@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using RicercaLocalizzata.Data;
 using RicercaLocalizzata.WPF.Model.Interfaces;
+using System;
 using System.Collections;
 
 namespace RicercaLocalizzata.WPF.Model.Wrapper
@@ -90,10 +91,38 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
                     }
 
 
-                    _model.Value = value;
+                    _model.Value = Convert(value);
                     RaisePropertyChanged(nameof(Value));
                 }
             }
+        }
+
+
+        private object Convert(object obj)
+        {
+            Type objType = obj.GetType();
+
+            if(objType == _model.Type)
+            {
+                return obj;
+            }
+            else
+            {
+                if(objType.FullName == "System.String")
+                {
+                    if(_model.Type.FullName == "System.Int")
+                    {
+                        return int.Parse(obj.ToString());
+                    }
+                    else if(_model.Type.FullName == "System.Double")
+                    {
+                        return double.Parse(obj.ToString());
+                    }
+                }
+            }
+
+            //quando passo di qui???
+            return obj;
         }
 
         private string _categoryDescription;
@@ -122,7 +151,6 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
             }
             set
             {
-
                 _items = value;
                 RaisePropertyChanged(nameof(Items));
             }
@@ -191,6 +219,7 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
         public void AcceptChanges()
         {
             OriginalValue = null;
+            //RaisePropertyChanged(nameof(IsValueChanged));
         }
 
         public void RejectChanges()
