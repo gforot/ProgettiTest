@@ -81,6 +81,14 @@ namespace RicercaLocalizzata.WPF.ViewModels
                         AcceptChangesCommand.RaiseCanExecuteChanged();
                         RejectChangesCommand.RaiseCanExecuteChanged();
                     }
+                    else if (e.PropertyName == nameof(MyItemWrapper.IsValueChanged))
+                    {
+                        RaisePropertyChanged(nameof(Modified));
+                        RaisePropertyChanged(nameof(Title));
+                        SaveCommand.RaiseCanExecuteChanged();
+                        AcceptChangesCommand.RaiseCanExecuteChanged();
+                        RejectChangesCommand.RaiseCanExecuteChanged();
+                    }
                 };
 
                 MyItems.Add(iw);

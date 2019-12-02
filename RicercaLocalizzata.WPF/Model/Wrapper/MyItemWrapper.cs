@@ -110,7 +110,7 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
             {
                 if(objType.FullName == "System.String")
                 {
-                    if(_model.Type.FullName == "System.Int")
+                    if(_model.Type.FullName == "System.Int32")
                     {
                         return int.Parse(obj.ToString());
                     }
@@ -219,7 +219,7 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
         public void AcceptChanges()
         {
             OriginalValue = null;
-            //RaisePropertyChanged(nameof(IsValueChanged));
+            RaisePropertyChanged(nameof(IsValueChanged));
         }
 
         public void RejectChanges()
@@ -228,6 +228,8 @@ namespace RicercaLocalizzata.WPF.Model.Wrapper
             {
                 Value = OriginalValue;
                 OriginalValue = null;
+
+                RaisePropertyChanged(nameof(IsValueChanged));
             }
         }
     }
