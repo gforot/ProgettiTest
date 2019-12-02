@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RicercaLocalizzata.Data;
 using RicercaLocalizzata.WPF.Model;
+using RicercaLocalizzata.WPF.Model.Factory;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,11 +12,14 @@ using System.Globalization;
 using System.Threading;
 using System.Windows;
 using System.Windows.Data;
+using System.Linq;
 
 namespace RicercaLocalizzata.WPF.ViewModels
 {
     public class MainWindowsViewModel : ViewModelBase
     {
+        private const string _title = "VGP3D";
+
         private string _searchText;
         public string SearchText
         {
@@ -30,6 +34,21 @@ namespace RicercaLocalizzata.WPF.ViewModels
                     _searchText = value;
                     MyCollectionView.Refresh();
                     RaisePropertyChanged(nameof(SearchText));
+                }
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                if (Modified)
+                {
+                    return $"{_title} *";
+                }
+                else
+                {
+                    return _title;
                 }
             }
         }
@@ -49,7 +68,20 @@ namespace RicercaLocalizzata.WPF.ViewModels
 
             foreach(MyItem i in myItems)
             {
-                MyItems.Add(MyItemWrapperFactory.Create(i));
+                MyItemWrapper iw = MyItemWrapperFactory.Create(i);
+
+                iw.PropertyChanged += (s, e)=>
+                {
+                    if(e.PropertyName == nameof(MyItemWrapper.Value))
+                    {
+                        //se ho cambiato il valore, notifico la modifica di Modified
+                        RaisePropertyChanged(nameof(Modified));
+                        RaisePropertyChanged(nameof(Title));
+                        SaveCommand.RaiseCanExecuteChanged();
+                    }
+                };
+
+                MyItems.Add(iw);
             }
 
             //MyItems.Add(MyItemWrapperFactory.Create(MyItemWrapper.Element_Cognome, MyItemWrapper.Cat_2, 10));
@@ -95,6 +127,11 @@ namespace RicercaLocalizzata.WPF.ViewModels
             ChangeLanguageCommand = new RelayCommand<string>(ChangeLanguage);
 
             SetLanguage("it-IT");
+        }
+
+        public bool Modified
+        {
+            get { return MyItems.Any(i=>i.IsValueChanged); }
         }
 
 
@@ -144,7 +181,7 @@ namespace RicercaLocalizzata.WPF.ViewModels
 
         private bool CanSave()
         {
-            return true;
+            return Modified;
         }
 
     }

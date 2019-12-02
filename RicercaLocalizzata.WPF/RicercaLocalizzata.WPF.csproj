@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Factory\MyItemWrapperFactory.cs" />
     <Compile Include="Resources\Resource1.en-UK.Designer.cs">
       <DependentUpon>Resource1.en-UK.resx</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -31,7 +31,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource dataTypeTextbox}" Text="STRING" Foreground="Red" />
                 <TextBlock Width="150" FontSize="15" Text="{Binding Path=Description}" ToolTip="{Binding Path=CategoryDescription}" />
-                <TextBox Width="150" FontSize="18" Text="{Binding Path=Value}" />
+                <TextBox Width="150" FontSize="18" Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </DataTemplate>
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RicercaLocalizzata.WPF"
        
         mc:Ignorable="d"
-        Title="MainWindow" Height="588.768" Width="853.455" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="{Binding Title}" Height="588.768" Width="853.455" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

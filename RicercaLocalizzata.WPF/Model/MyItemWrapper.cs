@@ -1,46 +1,23 @@
 ﻿using GalaSoft.MvvmLight;
 using RicercaLocalizzata.Data;
-using System;
 using System.Collections;
 
 namespace RicercaLocalizzata.WPF.Model
 {
-    public static class MyItemWrapperFactory 
-    {
-        public static MyItemWrapper Create(MyItem myItem)
-        {
-            Type valueType = myItem.Value.GetType();
-            if (valueType.IsEnum)
-            {
-                MyItemWrapper m = new MyItemWrapper(myItem);
-                m.Items = Enum.GetValues(valueType);
-                return m;
-            }
-            else
-            {
-                return new MyItemWrapper(myItem);
-            }
-        }
-    }
-
-
     public class MyItemWrapper : ViewModelBase
     {
-
-
-
-        private readonly MyItem _myItem;
+        private readonly MyItem _model;
 
         public MyItemWrapper(MyItem myItem)
         {
-            _myItem = myItem;
+            _model = myItem;
         }
 
         public string Code
         {
             get
             {
-                return _myItem.Code;
+                return _model.Code;
             }
         }
 
@@ -48,7 +25,7 @@ namespace RicercaLocalizzata.WPF.Model
         {
             get
             {
-                return _myItem.Category;
+                return _model.Category;
             }
         }
 
@@ -69,14 +46,45 @@ namespace RicercaLocalizzata.WPF.Model
             }
         }
 
+
+        /// <summary>
+        /// Torna true se il valore è stato modificato.
+        /// </summary>
+        public bool IsValueChanged
+        {
+            get
+            {
+                return OriginalValue != null;
+            }
+        }
+
+        /// <summary>
+        /// Valore originario.
+        /// Null se il valore non è stato modificato, quindi il valore originario coincide con il valore attuale.
+        /// </summary>
+        public object OriginalValue { get; set; } = null;
+
+
         public object Value
         {
-            get { return _myItem.Value; }
+            get { return _model.Value; }
             set
             {
-                if (_myItem.Value != value)
+                if (_model.Value != value)
                 {
-                    _myItem.Value = value;
+                    if(OriginalValue == null)
+                    {
+                        OriginalValue = _model.Value;
+                    }
+                    else if (value.Equals(OriginalValue))
+                    {
+                        //sto ripristinando il valore originale.
+                        //è come se ho annullato la modifica.
+                        OriginalValue = null;
+                    }
+
+
+                    _model.Value = value;
                     RaisePropertyChanged(nameof(Value));
                 }
             }
