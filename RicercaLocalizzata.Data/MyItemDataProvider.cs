@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RicercaLocalizzata.Data.Enum;
+using System.Collections.Generic;
 
 namespace RicercaLocalizzata.Data
 {

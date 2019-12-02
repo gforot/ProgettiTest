@@ -1,4 +1,4 @@
-﻿namespace RicercaLocalizzata.Data
+﻿namespace RicercaLocalizzata.Data.Enum
 {
     public enum ETipoTubo : int
     {

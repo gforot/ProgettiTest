@@ -1,5 +1,5 @@
 ﻿
-namespace RicercaLocalizzata.Data
+namespace RicercaLocalizzata.Data.Enum
 {
     public enum ETipoTavolo : int
     {

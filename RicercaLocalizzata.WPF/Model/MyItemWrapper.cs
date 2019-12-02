@@ -13,6 +13,11 @@ namespace RicercaLocalizzata.WPF.Model
             _model = myItem;
         }
 
+        public MyItem Model
+        {
+            get { return _model; }
+        }
+
         public string Code
         {
             get

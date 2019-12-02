@@ -41,10 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ETipoTubo.cs" />
-    <Compile Include="ETipoTavolo.cs" />
+    <Compile Include="Enum\ETipoTubo.cs" />
+    <Compile Include="Enum\ETipoTavolo.cs" />
     <Compile Include="MyItem.cs" />
     <Compile Include="MyItemDataProvider.cs" />
+    <Compile Include="MyItemSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

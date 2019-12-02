@@ -9,5 +9,10 @@
         public string Category { get; set; }
 
         public object Value { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Code} - {Description} - {Category} - {Value}";
+        }
     }
 }

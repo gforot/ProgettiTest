@@ -1,5 +1,4 @@
-﻿
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RicercaLocalizzata.Data;
 using RicercaLocalizzata.WPF.Model;
@@ -9,10 +8,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
-using System.Threading;
-using System.Windows;
-using System.Windows.Data;
 using System.Linq;
+using System.Threading;
+using System.Windows.Data;
 
 namespace RicercaLocalizzata.WPF.ViewModels
 {
@@ -176,7 +174,8 @@ namespace RicercaLocalizzata.WPF.ViewModels
 
         private void Save()
         {
-            MessageBox.Show("Save clicked");
+            MyItemSerializer s = new MyItemSerializer();
+            s.Save(this.MyItems.Select(mi => mi.Model), @"c:\Temp\elementi.txt");
         }
 
         private bool CanSave()
