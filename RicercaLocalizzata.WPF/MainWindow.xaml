@@ -13,6 +13,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Ricerca" Margin="5" />
@@ -61,5 +65,14 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+
+
+        <StackPanel Grid.Column="1" Grid.RowSpan="3" >
+            <Button Style="{StaticResource functionButtonStyle}" Command="{Binding SaveCommand}" Content="Salva" />
+            <Button Style="{StaticResource functionButtonStyle}" Content="Nuovo tubo" />
+            <Button Style="{StaticResource functionButtonStyle}" Content="Carica tubo" />
+
+        </StackPanel>
     </Grid>
 </Window>

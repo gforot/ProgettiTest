@@ -3,11 +3,10 @@ using RicercaLocalizzata.Data;
 using System;
 using System.Collections;
 
-namespace RicercaLocalizzata.WPF
+namespace RicercaLocalizzata.WPF.Model
 {
     public static class MyItemWrapperFactory 
     {
-
         public static MyItemWrapper Create(MyItem myItem)
         {
             Type valueType = myItem.Value.GetType();

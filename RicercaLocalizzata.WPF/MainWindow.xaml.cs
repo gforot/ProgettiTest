@@ -1,4 +1,5 @@
 ﻿using RicercaLocalizzata.Data;
+using RicercaLocalizzata.WPF.ViewModels;
 using System.Windows;
 
 namespace RicercaLocalizzata.WPF

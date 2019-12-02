@@ -2,15 +2,17 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RicercaLocalizzata.Data;
+using RicercaLocalizzata.WPF.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Threading;
+using System.Windows;
 using System.Windows.Data;
 
-namespace RicercaLocalizzata.WPF
+namespace RicercaLocalizzata.WPF.ViewModels
 {
     public class MainWindowsViewModel : ViewModelBase
     {
@@ -38,6 +40,8 @@ namespace RicercaLocalizzata.WPF
         public ObservableCollection<MyItemWrapper> MyItems { get; private set; }
 
         public ICollectionView MyCollectionView { get; private set; }
+
+        public RelayCommand SaveCommand { get; private set; }
 
         public MainWindowsViewModel(IEnumerable<MyItem> myItems)
         {
@@ -69,6 +73,8 @@ namespace RicercaLocalizzata.WPF
             //MyItems.Add(new MyItemWrapper(new MyItem() { Code = MyItemWrapper.Element_Porta, Category = MyItemWrapper.Cat_2, Value = "A soffietto" }));
             //MyItems.Add(new MyItemWrapper(new MyItem() { Code = MyItemWrapper.Element_Benzina, Category = MyItemWrapper.Cat_2, Value = "Diesel 75 ottani"}));
 
+            //COMANDI
+            SaveCommand = new RelayCommand(Save, CanSave);
 
 
             // Collection which will take your ObservableCollection
@@ -131,6 +137,15 @@ namespace RicercaLocalizzata.WPF
             MyCollectionView.Refresh();
         }
 
+        private void Save()
+        {
+            MessageBox.Show("Save clicked");
+        }
+
+        private bool CanSave()
+        {
+            return true;
+        }
 
     }
 }
